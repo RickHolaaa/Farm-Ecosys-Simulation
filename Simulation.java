@@ -6,6 +6,7 @@ public class Simulation {
     public Simulation(int taille,int m, int n){
         /* Initialiser le terrain, m ressources et n agents */
         terrain = new Terrain();
+        // On remplit le terrain
         for(int i=0;i<20;i++){
             for(int j=0;j<20;j++){
                 if(i<=10){ // Cas de la ferme : placer aléatoirement des ressources sur le terrain
@@ -24,7 +25,9 @@ public class Simulation {
                 }
             }
         }
-        terrain.affiche(5);
+        // Afficher le terrain
+        terrain.affiche(1);
+        // Générer la liste des agents & ressources
         agents = new Agent[n];
         ressources = new Ressource[m];
 
@@ -118,30 +121,6 @@ public class Simulation {
                 }
             }
         }
-    }
-
-    public String toString(){
-        String affichage = "";
-        terrain.affiche(1);
-        for(int i=0;i<Terrain.NBLIGNESMAX;i++){
-            affichage+="| ";
-            for(int j=0;j<Terrain.NBCOLONNESMAX;j++){
-                if(terrain.getCase(i, j).type=="herbe"){
-                    affichage+="H ";
-                }
-                else if(terrain.getCase(i, j).type=="eau"){
-                    affichage+="E ";
-                }
-                else if(terrain.getCase(i, j).type=="foin"){
-                    affichage+="F ";
-                }
-                else{
-                    affichage+="  ";
-                }
-            }
-            affichage+="|\n";
-        }
-        return affichage;
     }
 
 }
