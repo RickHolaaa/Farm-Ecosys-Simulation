@@ -23,7 +23,7 @@ public class AnimauxFerme extends Animaux{
         hp/=2;
         return a;
     }
-    public void reduceHP(int enleve){
+    public void reduceHp(int enleve){
         this.hp-=enleve;
     }
     public String toString(){

@@ -15,7 +15,7 @@ public class Chasseur extends Homme implements Ennemi
     }
 
 
-    public void tuer(ArrayList<AnimauxFerme> t)
+    public void tuer(ArrayList<AnimauxFerme> tab)
     {
         //Si on suppose que le terrain est de taille 20*20 et que la ferme est dans la premiere partie
         //du terrain (de la ligne/colonne 1 a ligne/colonne 10)
@@ -36,10 +36,10 @@ public class Chasseur extends Homme implements Ennemi
                     {
                         tab.remove(i);
                         munitions--;
-                        nbVictime++;
+                        nbMort++;
                         return;
                     }
-                    tab.get(i).reduceHp(1);
+                    (tab.get(i)).reduceHp(1);
                 }
             }
             //Si aucun animal ne se situe à ces coordonnées, alors la balle est perdue et aucun degat n'a été commis

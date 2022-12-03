@@ -23,13 +23,17 @@ public class AnimauxPred extends Animaux implements Ennemi{
             }
         }
     }
-    public void tuer(AnimauxFerme a){
-            if (a.x== this.x && a.y== this.y){
-                this.hp+=a.hp;
+    public void tuer(ArrayList<AnimauxFerme> l){
+        for(int i=0; i<l.size();i++)
+        {
+            AnimauxFerme tmp=l.get(i);
+            if (tmp.x== this.x && tmp.y== this.y){
+                this.hp+=tmp.hp;
                 if(this.hp>100)this.hp=100;
-                a.hp=0;
-                a=null;
+                tmp.hp=0;
+                tmp=null;
             }
+        }
     }
     public String toString(){
         return "Animal predateur: "+super.toString();

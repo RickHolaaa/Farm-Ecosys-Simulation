@@ -17,7 +17,11 @@ public class Fermier extends Homme
         {
             for(int j=0;j<t.nbColonnes;j++)
             {
-                tmp.setQuantite(tmp.getQuantite()+n);
+                Ressource tmp=t.getCase(i,j);
+                if(tmp!=null)
+                {
+                    tmp.setQuantite(tmp.getQuantite()+n);
+                }
             }
         }
     }
@@ -33,7 +37,7 @@ public class Fermier extends Homme
 
     public void getRessourceDisponible()
     {
-        for(int i=0;i<size();i++)
+        for(int i=0;i<tab.size();i++)
         {
             Ressource r=tab.get(i);
             System.out.println(r.toString());

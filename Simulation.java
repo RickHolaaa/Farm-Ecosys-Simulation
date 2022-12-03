@@ -59,7 +59,7 @@ public class Simulation {
                     }
                 }
 
-
+                /*
                 // Pour les fermiers : A MODIFIER - PARCOURT GENERAL DU TERRAIN PAR LE FERMIER EN UNE SEULE METHODE
                 if(agents[i] instanceof Fermier){
                     int x = agents[i].getX();
@@ -85,6 +85,7 @@ public class Simulation {
                     // Il se réapprovisionne dans la ferme (automatiquement)
                     ((Fermier)agents[i]).setNourriture();
                 }
+                */
 
 
                 // Pour les chasseurs :
