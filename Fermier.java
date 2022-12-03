@@ -2,44 +2,43 @@ import java.util.ArrayList;
 
 public class Fermier extends Homme
 {
-    private int qt_eau;//En Litre
-    private int qt_foin;//En kg
-    private int ressources;
-    private ArrayList<AnimauxFerme> tab;
 
-    public Fermier(int x, int y, String nom)
+    private ArrayList<Ressource> tab;
+
+    public Fermier(int x, int y, String nom, ArrayList<Ressource> tab)
     {
         super(x,y,nom);
-        qt_eau=(int)(Math.random()*10)+5;
-        qt_foin=(int)(Math.random()*10)+5;
-        ressources=(int)(Math.random()*10)+5;
     }
 
-    public void nourir(Terrain t)
+
+    public void reaprovisionner(Terrain t,int n)
     {
         for(int i=0;i<t.nbLignes;i++)
         {
             for(int j=0;j<t.nbColonnes;j++)
             {
-                Ressource tmp=t.getCase(i,j);
-                if(tmp.getQuantite()<5)
-                {
-                    if(qt_eau>=5)
-                    {
-                        tmp.setQuantite(tmp.getQuantite()+5);
-                        qt_eau-=5;
-                    }
-                    if(qt_foin>=5)
-                    {
-                        tmp.setQuantite(tmp.getQuantite()+5);
-                        qt_eau-=5;
-                    }
-                }
+                tmp.setQuantite(tmp.getQuantite()+n);
             }
         }
     }
-    public int getNourriture(){ return ressources; }
-    public void setNourriture(){
-        ressources=(int)(Math.random()*10)+5;
+
+    public void updateRessource()
+    {
+        for(int i=0;i<tab.size();i++)
+        {
+            Ressource r=tab.get(i);
+            r.setQuantite(r.getQuantite()+(int)(Math.random()*(10-5+1))+5);
+        }
     }
+
+    public void getRessourceDisponible()
+    {
+        for(int i=0;i<size();i++)
+        {
+            Ressource r=tab.get(i);
+            System.out.println(r.toString());
+        }
+    }
+    //Chaque mois fermier recois stock de ressource 
+    
 }

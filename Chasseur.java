@@ -4,7 +4,8 @@ public class Chasseur extends Homme implements Ennemi
 {
     private boolean typeArme; //True pour armes mortelle et False pour armes qui blesse
     private int munitions;
-    private int nbVictime;
+    private int nbMort;
+    private int nbBlesse;
 
     public Chasseur(boolean typeArme,int x, int y,String nom)
     {
@@ -13,11 +14,8 @@ public class Chasseur extends Homme implements Ennemi
         munitions=(int)(Math.random()*3)+3;
     }
 
-    public void tuer(AnimauxFerme a){
 
-    }
-
-    public void tuerTous(ArrayList<AnimauxFerme> t)
+    public void tuer(ArrayList<AnimauxFerme> t)
     {
         //Si on suppose que le terrain est de taille 20*20 et que la ferme est dans la premiere partie
         //du terrain (de la ligne/colonne 1 a ligne/colonne 10)
@@ -30,18 +28,18 @@ public class Chasseur extends Homme implements Ennemi
             int x_tmp=(int)(Math.random()*11)+10;
             int y_tmp=(int)(Math.random()*11)+10;
 
-            for(int i=0;i<t.size();i++)
+            for(int i=0;i<tab.size();i++)
             {
-                if(t.get(i).x==x_tmp && t.get(i).y==y_tmp)
+                if(tab.get(i).getX()==x_tmp && tab.get(i).getY()==y_tmp)
                 {
-                    if(typeArme)
+                    if(typeArme) //Si armes mortelle
                     {
-                        t.remove(i);
+                        tab.remove(i);
                         munitions--;
                         nbVictime++;
                         return;
                     }
-                    t.get(i).reduceHP(t.get(i).hp-1);
+                    tab.get(i).reduceHp(1);
                 }
             }
             //Si aucun animal ne se situe à ces coordonnées, alors la balle est perdue et aucun degat n'a été commis
@@ -50,9 +48,9 @@ public class Chasseur extends Homme implements Ennemi
         else
         {
             if(typeArme)
-                System.out.println("Chasseur a tué "+nbVictime);
+                System.out.println("Chasseur à tuer "+nbMort);
             else
-                System.out.println("Chasseur a tué "+nbVictime);
+                System.out.println("Chasseur à tuer "+nbBlesse);
         }
     }   
 }
