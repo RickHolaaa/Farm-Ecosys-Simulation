@@ -2,18 +2,18 @@ import java.util.ArrayList;
 public abstract class Agent{
     protected int x;
     protected int y;
-    protected String nom;
-    private static ArrayList<Agent> l;
-    public Agent(int x,int y,String nom){
+    protected String type;
+    private static ArrayList<Agent> l = new ArrayList<Agent>();
+    public Agent(int x,int y,String type){
         this.x=x;
         this.x=y;
-        this.nom=nom;
+        this.type=type;
         l.add(this);
     }
-    public Agent(String nom){
-        this((int)(Math.random()*10),(int)(Math.random()*10),nom);
+    public Agent(String type){
+        this((int)(Math.random()*10),(int)(Math.random()*10),type);
     }
-    public void seDplacer(int xnew,int ynew){
+    public void seDeplacer(int xnew,int ynew){
         for(Agent a:l){
             if(a.x==xnew && a.y==ynew)return;
         }
@@ -31,7 +31,7 @@ public abstract class Agent{
     }
 
     public String toString(){
-        return nom+" en position "+x+" "+y;
+        return type+" en position "+x+" "+y;
     }
-    public String getNom(){ return nom; }
+    public String getType(){ return type; }
 }

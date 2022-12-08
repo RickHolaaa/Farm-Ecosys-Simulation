@@ -1,26 +1,28 @@
 public class AnimauxFerme extends Animaux{
 
-    public AnimauxFerme(int v,String nom,Ressource[] r){
-        super(v,r,nom);
+    public AnimauxFerme(int hp,String[] mangeable,String type){
+        super(hp,mangeable,type);
     }
-
-    public void manger(String type){
-        for(int i=0;i<resmang.length;i++){
-            if(resmang[i].type==type){
-                int q=resmang[i].getQuantite();
-                resmang[i].setQuantite(0);
-                if(hp<100)hp+=q;
-                if(hp>100)hp=100;
-                System.out.println("L'animal "+this.nom+" mange"+type);
-            }
-            else{
-                System.out.println("L'animal "+this.nom+" ne peut pas manger "+type);
+    public AnimauxFerme clone(){
+       return new AnimauxFerme(hp, mangeable, type);
+    }
+    public boolean manger(Ressource res){
+        for(int i=0;i<mangeable.length;i++){
+            if(mangeable[i].equals(res.type)){
+                int q = res.getQuantite();
+                res.setQuantite(0);
+                if(hp<100){ hp+=q; }
+                if(hp>100){ hp=100; }
+                System.out.println("L'animal "+this.type+" mange "+res.toString());
+                return true;
             }
         }
+        System.out.println("L'animal "+this.type+" n'a pas trouve de nourriture...");
+        return false;
     }
     public AnimauxFerme reproduire(){
-        AnimauxFerme a=new AnimauxFerme(hp/2,this.nom,resmang);
-        hp/=2;
+        AnimauxFerme a = clone();
+        a.hp/=2;
         return a;
     }
     public void reduceHp(int enleve){

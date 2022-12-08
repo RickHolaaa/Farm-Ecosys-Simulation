@@ -1,0 +1,125 @@
+                }
+                else{
+                    if(Math.random()<0.35){ // Rien
+                        Ressource rien = new Ressource("Rien", 0);
+                        rien.setPosition(ligne, colonne);
+                        terrain.setCase(ligne, colonne, rien);
+                    }
+                    else if(Math.random()<0.60){
+                        if(nbRes<m){
+                            int qtt = (int)(Math.random()*(100)+1);
+                            Ressource herbe = new Ressource("Herbe", qtt);
+                            herbe.setPosition(ligne, colonne);
+                            ressources[nbRes++] = herbe;
+                            terrain.setCase(ligne, colonne, herbe);
+                        }
+                    }
+                    else if(Math.random()<0.80){
+                        if(nbRes<m){
+                            int qtt = (int)(Math.random()*(100)+1);
+                            Ressource eau = new Ressource("Eau", qtt);
+                            eau.setPosition(ligne, colonne);    
+                            ressources[nbRes++] = eau;
+                            terrain.setCase(ligne, colonne, eau);
+                        }
+                    }
+                    else if(Math.random()<0.90){
+                        if(nbRes<m){
+                            int qtt = (int)(Math.random()*(100)+1);
+                            Ressource graine = new Ressource("Graine", qtt);
+                            graine.setPosition(ligne, colonne); 
+                            ressources[nbRes++] = graine; 
+                            terrain.setCase(ligne, colonne, graine);
+                        }
+                    }
+                    else{
+                        if(nbRes<m){
+                            int qtt = (int)(Math.random()*(100)+1);
+                            Ressource foin = new Ressource("Foin", qtt);
+                            foin.setPosition(ligne, colonne);  
+                            ressources[nbRes++] = foin;
+                            terrain.setCase(ligne, colonne, foin);
+                        }
+                    }
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                for(int cpt=0;cpt<ressources.length;cpt++){
+            if(Math.random()<0.35){ // Rien
+                Ressource rien = new Ressource("Rien", 0);
+                // Coordonees
+                int ligne = (int)(Math.random()*(taille-taille/2)+taille/2);
+                int colonne = (int)(Math.random()*(taille));
+                while(!terrain.caseEstVide(ligne, colonne)){ // Tant qu'il y a qlq chose sur la case, on regenère des coordonees
+                    ligne = (int)(Math.random()*(taille-taille/2)+taille/2);
+                    colonne = (int)(Math.random()*(taille));
+                }
+                System.out.println("Coordonees R (x,y) = "+ligne+","+colonne);
+                rien.setPosition(ligne, colonne);
+                ressources[cpt] = rien;
+            }
+            else if(Math.random()<0.60){
+                int qtt = (int)(Math.random()*(100)+1);
+                Ressource herbe = new Ressource("Herbe", qtt);
+                // Coordonees
+                int ligne = (int)(Math.random()*(taille-taille/2)+taille/2);
+                int colonne = (int)(Math.random()*(taille));
+                while(!terrain.caseEstVide(ligne, colonne)){ // Tant qu'il y a qlq chose sur la case, on regenère des coordonees
+                    ligne = (int)(Math.random()*(taille-taille/2)+taille/2);
+                    colonne = (int)(Math.random()*(taille));
+                }
+                herbe.setPosition(ligne, colonne);
+                ressources[cpt] = herbe;
+            }
+            else if(Math.random()<0.80){
+                int qtt = (int)(Math.random()*(100)+1);
+                Ressource eau = new Ressource("Eau", qtt);
+                // Coordonees
+                int ligne = (int)(Math.random()*(taille-taille/2)+taille/2);
+                int colonne = (int)(Math.random()*(taille));
+                while(!terrain.caseEstVide(ligne, colonne)){ // Tant qu'il y a qlq chose sur la case, on regenère des coordonees
+                    ligne = (int)(Math.random()*(taille-taille/2)+taille/2);
+                    colonne = (int)(Math.random()*(taille));
+                }
+                eau.setPosition(ligne, colonne);    
+                ressources[cpt] = eau;
+            }
+            else if(Math.random()<0.90){
+                int qtt = (int)(Math.random()*(100)+1);
+                Ressource graine = new Ressource("Graine", qtt);
+                // Coordonees
+                int ligne = (int)(Math.random()*(taille-taille/2)+taille/2);
+                int colonne = (int)(Math.random()*(taille));
+                while(!terrain.caseEstVide(ligne, colonne)){ // Tant qu'il y a qlq chose sur la case, on regenère des coordonees
+                    ligne = (int)(Math.random()*(taille-taille/2)+taille/2);
+                    colonne = (int)(Math.random()*(taille));
+                }
+                graine.setPosition(ligne, colonne); 
+                ressources[cpt] = graine;            
+            }
+            else{
+                int qtt = (int)(Math.random()*(100)+1);
+                Ressource foin = new Ressource("Foin", qtt);
+                // Coordonees
+                int ligne = (int)(Math.random()*(taille-taille/2)+taille/2);
+                int colonne = (int)(Math.random()*(taille));
+                while(!terrain.caseEstVide(ligne, colonne)){ // Tant qu'il y a qlq chose sur la case, on regenère des coordonees
+                    ligne = (int)(Math.random()*(taille-taille/2)+taille/2);
+                    colonne = (int)(Math.random()*(taille));
+                }
+                foin.setPosition(ligne, colonne);  
+                ressources[cpt] = foin;
+            }
+        }
