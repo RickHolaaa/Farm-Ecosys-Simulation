@@ -1,0 +1,2 @@
+//Commentaire
+console.log("Affichage")
